@@ -1,16 +1,15 @@
 {
-  "name": "workspace",
+  "name": "rbconlineapp",
   "version": "1.0.0",
   "type": "module",
+  "description": "RBC Online Banking Clone",
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "deploy": "gh-pages -d dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "@vitejs/plugin-react": "^5.1.2",
@@ -24,5 +23,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1"
-  }
+  },
+  "homepage": "https://cinergy-alt.github.io/rbconlineapp/"
 }
