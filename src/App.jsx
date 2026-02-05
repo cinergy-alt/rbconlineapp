@@ -5,14 +5,23 @@ export default function RBCBankClone() {
   const [currentPage, setCurrentPage] = useState('login');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loggedInUser, setLoggedInUser] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [selectedAccount, setSelectedAccount] = useState('chequing');
 
-  const DEMO_CREDENTIALS = {
-    username: 'mikayla_demaiter',
-    password: 'Mikayla2026!'
-  };
+  const DEMO_CREDENTIALS = [
+    {
+      username: 'mikayla_demaiter',
+      password: 'Mikayla2026!',
+      name: 'Mikayla'
+    },
+    {
+      username: 'bryan_james',
+      password: 'Bryan2026!',
+      name: 'Bryan James'
+    }
+  ];
 
   const getCurrentDate = () => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -23,7 +32,9 @@ export default function RBCBankClone() {
     e.preventDefault();
     setLoginError('');
 
-    if (username === DEMO_CREDENTIALS.username && password === DEMO_CREDENTIALS.password) {
+    const user = DEMO_CREDENTIALS.find(u => u.username === username && u.password === password);
+    if (user) {
+      setLoggedInUser(user);
       setCurrentPage('dashboard');
       setUsername('');
       setPassword('');
@@ -34,6 +45,7 @@ export default function RBCBankClone() {
 
   const handleLogout = () => {
     setCurrentPage('login');
+    setLoggedInUser(null);
     setUsername('');
     setPassword('');
     setLoginError('');
@@ -229,7 +241,7 @@ export default function RBCBankClone() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Welcome back, Mikayla</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Welcome back, {loggedInUser?.name || 'User'}</h2>
           <p className="text-gray-600 mt-1">{getCurrentDate()}</p>
         </div>
 
@@ -276,7 +288,7 @@ export default function RBCBankClone() {
                     Cardholder Name
                   </p>
                   <p className={`font-semibold mt-1 ${selectedAccount === 'chequing' ? 'text-blue-50' : 'text-gray-700'}`}>
-                    MIKAYLA DEMAITER
+                    {(loggedInUser?.name || 'MIKAYLA DEMAITER').toUpperCase()}
                   </p>
                 </div>
               </div>
