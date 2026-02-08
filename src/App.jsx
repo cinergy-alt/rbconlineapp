@@ -13,8 +13,8 @@ export default function RBCBankClone() {
   const DEMO_CREDENTIALS = [
     {
       username: 'mikayla_demaiter',
-      password: 'Mikayla2026!',
-      name: 'Mikayla'
+      password: 'Mikayla1990!',
+      name: 'Mikayla Demaiter'
     },
     {
       username: 'bryan_james',
